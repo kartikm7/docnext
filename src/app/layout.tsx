@@ -21,17 +21,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-          <body
-        className={`${raleway.className} text-foreground bg-background dark:bg-zinc-950 antialiased`}
+      <body
+        className={`${raleway.className} text-foreground bg-background dark:bg-zinc-950 antialiased w-full h-screen flex flex-col`}
       >
-          <ThemeProvider
+        <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           // disableTransitionOnChange
         >
           <Navbar />
-          {children}
+          <div className="flex-1 overflow-hidden">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
