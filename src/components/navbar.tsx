@@ -2,6 +2,7 @@ import { Flower } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { ModeToggle } from "./mode-toggle";
 import { Button } from "./ui/button";
+import Search from "./navbar/search";
 
 export default function Navbar() {
   return (
@@ -12,6 +13,7 @@ export default function Navbar() {
       </div>
       <div className="flex justify-center items-center gap-4">
         <Button variant='link' className="p-0 opacity-75 hover:opacity-100 transition-all">Documentation</Button>
+        <Search />
         <div className="flex justify-center items-center">
         <Button size="icon" variant={'ghost'}><FaGithub className="text-2xl" /></Button>
         <ModeToggle />
