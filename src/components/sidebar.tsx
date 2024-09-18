@@ -82,7 +82,7 @@ function RouteItem({ route, level = 0 }: { route: RouteType; level?: number }) {
 
 export default function Sidebar({className, ...props}:ComponentProps<'aside'>) {
   return (
-    <aside className={cn(className,"bg-background border-r-2 h-screen overflow-y-auto")} {...props}>
+    <aside className={cn(className,"bg-background border-r-2 h-screen overflow-y-auto w-64")} {...props}>
       <div className="p-8">
         {routes.map((route) => (
           <RouteItem key={route.path} route={route} />

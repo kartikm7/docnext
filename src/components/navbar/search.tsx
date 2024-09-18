@@ -11,20 +11,62 @@ import {
 } from "../ui/command";
 import { useRouter } from "next/navigation";
 
+interface recursiveCommandItemProps extends ComponentProps<"div"> {
+  route: RouteType;
+  setOpen?: (pre:boolean) => void;
+}
+
+function CustomCommandItem({ route, setOpen }: recursiveCommandItemProps) {
+  const router = useRouter();
+  return route.children ? (
+    <>
+      <CommandItem
+        key={route.path}
+        onSelect={() => { 
+          router.push(route.path);
+          setOpen && setOpen(false)
+        }}
+      >
+        {route.name}
+      </CommandItem>
+      <div className="border-l-2 ml-4 pl-2">
+        {route.children.map((childNode) => (
+          <CustomCommandItem route={childNode} key={childNode.path} setOpen={setOpen} />
+        ))}
+      </div>
+    </>
+  ) : (
+    <CommandItem
+      key={route.path}
+      onSelect={() => {
+        router.push(route.path);
+        setOpen && setOpen(false)
+      }}
+    >
+      {route.name}
+    </CommandItem>
+  );
+}
+
+function flattenRoutes(arr: RouteType[]): RouteType[] {
+  const flat = arr.reduce((acc: RouteType[], route) => {
+    acc.push(route);
+    if (route.children) acc.push(...flattenRoutes(route.children));
+    return acc;
+  }, []);
+  return flat;
+}
+
 export default function Search({ ...props }: ComponentProps<"div">) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
   const [autoComplete, setAutoComplete] = useState<RouteType[]>(routes);
-  const router = useRouter();
-  function handleChange(e:ChangeEvent<HTMLInputElement>) {
+  const [input, setInput] = useState<string>("");
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const currentValue = e.target.value;
-    setValue(currentValue);
+    setInput(currentValue);
     setAutoComplete(
-      routes.filter(
-        (val) =>
-          val.name.includes(currentValue) ||
-          val.name.toLowerCase().includes(currentValue) ||
-          val.name.toUpperCase().includes(currentValue)
+      flattenRoutes(routes).filter((val) =>
+        val.name.toLowerCase().includes(currentValue.toLowerCase())
       )
     );
   }
@@ -41,12 +83,16 @@ export default function Search({ ...props }: ComponentProps<"div">) {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  useEffect(() => {}, [value]);
-
   return (
     <>
       {open && (
-        <CommandDialog defaultOpen onOpenChange={setOpen}>
+        <CommandDialog
+          defaultOpen
+          onOpenChange={() => {
+            setOpen((pre) => !pre);
+            setAutoComplete(routes);
+          }}
+        >
           <Input
             className=""
             onChange={handleChange}
@@ -54,20 +100,14 @@ export default function Search({ ...props }: ComponentProps<"div">) {
           />
           <CommandList className="p-2">
             <CommandEmpty>No results found.</CommandEmpty>
-            {autoComplete.map((val, index) => (
-              <CommandItem
-                onSelect={() => {
-                  router.push(val.path);
-                  setOpen(pre => !pre)
-                  setAutoComplete(routes)
-                }}
-                className="opacity-75 hover:opacity-100"
-                key={index}
-              >
-                {val.name}
-              </CommandItem>
-            ))}
-          </CommandList>
+            {input.trim().length > 0
+              ? autoComplete.map((val, index) => (
+                  <CustomCommandItem key={index} route={val} setOpen={setOpen} />
+                ))
+              : routes.map((val, index) => (
+                  <CustomCommandItem key={index} route={val} setOpen={setOpen} />
+                ))}
+          </CommandList>  
         </CommandDialog>
       )}
       <div
@@ -78,8 +118,8 @@ export default function Search({ ...props }: ComponentProps<"div">) {
         <p className="text-sm hidden md:block">Search documentation</p>
         <p className="text-sm md:hidden">Search</p>
         <div className="flex items-center gap-1 bg-secondary w-fit p-1 px-2 rounded-md text-xs ">
-          <BiCommand className="hidden md:block"/>
-          <BiSearch className="md:hidden"/>
+          <BiCommand className="hidden md:block" />
+          <BiSearch className="md:hidden" />
           <p className="hidden md:block">K</p>
         </div>
       </div>
