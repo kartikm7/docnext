@@ -27,5 +27,9 @@ export const routes: RouteType[] = [
   {
     name: "Deploy",
     path: "/docs/deploy",
+  },
+  {
+    name: "Template",
+    path: "/docs/template"
   }
 ]
