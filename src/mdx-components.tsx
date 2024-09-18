@@ -16,7 +16,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h3: ({ children }) => <h3 className="text-lg font-medium mb-2">{children}</h3>,
     p: ({ children }) => <p className="text-base mb-2">{children}</p>,
-    ul: ({ children }) => <ul className="list-disc mb-2">{children}</ul>,
+    ul: ({ children }) => <ul className="list-disc list-inside mb-2">{children}</ul>,
     ol: ({ children }) => <ol className="list-decimal list-inside mb-2">{children}</ol>,
     li: ({ children }) => <li className="mb-2">{children}</li>,
     a: ({ href, children }) => (
@@ -33,7 +33,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     code: ({ className, children }) => {
       const language = className ? className.replace(/language-/, "") : "";
       return language ? (
-        <div className="flex flex-col w-fit font-mono border-2 rounded-lg px-2">
+        <div className="flex flex-col w-fit max-w-full font-mono border-2 rounded-lg px-2">
           <div className="flex justify-between items-center gap-5 border-b-2 px-2">
             <div className="flex items-center gap-2">
               <FaTerminal />

@@ -13,6 +13,7 @@ export default function Navbar() {
         DocNext
       </Link>
       <div className="flex justify-center items-center gap-4">
+        <div className="hidden md:flex justify-center items-center gap-4">
         <Link href={"/docs"}>
           <Button
             variant="link"
@@ -21,6 +22,7 @@ export default function Navbar() {
             Documentation
           </Button>
         </Link>
+        </div>
         <Search />
         <div className="flex justify-center items-center">
           <Button size="icon" variant={"ghost"}>

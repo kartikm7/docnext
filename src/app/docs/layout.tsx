@@ -7,7 +7,7 @@ export default function DocsLayout({
 }>) {
   return (
     <div className="flex h-screen overflow-hidden">
-      <Sidebar />
+      <Sidebar className="hidden md:block" />
       <div className="flex-1 !overflow-y-auto">
         <div className="p-8">
           {children}

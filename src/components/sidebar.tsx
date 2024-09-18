@@ -1,11 +1,10 @@
 "use client"
 
-import React from "react"
+import React, { ComponentProps } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Accordion, AccordionContent, AccordionItem } from "@/components/ui/accordion"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { cn } from "@/lib/utils"
-import { ChevronRightIcon } from "lucide-react"
 
 export type RouteType = {
   name: string
@@ -37,42 +36,27 @@ export const routes: RouteType[] = [
 
 function RouteItem({ route, level = 0 }: { route: RouteType; level?: number }) {
   const pathname = usePathname()
-  const [open, setOpen] = React.useState(false)
-
   const isActive = pathname === route.path || pathname.startsWith(route.path + "/")
 
-  React.useEffect(() => {
-    if (isActive) {
-      setOpen(true)
-    }
-  }, [isActive])
 
-  const handleClick = () => {
-    if (route.children) {
-      setOpen(!open)
-    }
-  }
 
   return (
     <div>
       {route.children ? (
-        <Accordion type="single" collapsible value={open ? route.path : ""}>
+        <Accordion type="single" collapsible>
           <AccordionItem value={route.path} className="border-none">
-            <div
+          <Link href={route.path}>
+            <AccordionTrigger
               className={cn(
-                "flex items-center justify-between py-2 px-4 text-sm opacity-50 hover:opacity-100 cursor-pointer",
+                "flex items-center justify-between py-2 text-sm opacity-50 hover:opacity-100 cursor-pointer",
                 isActive && "opacity-100 font-medium"
               )}
-              onClick={handleClick}
             >
-              <div className="flex items-center gap-2">
-                {route.icon}
                 {route.name}
-              </div>
-              <ChevronRightIcon className={cn("h-4 w-4 transition-transform", open && "rotate-90")} />
-            </div>
-            <AccordionContent>
-              <div className="pl-4">
+            </AccordionTrigger>
+            </Link>
+             <AccordionContent>
+              <div className="border-l-2 pl-4">
                 {route.children.map((childRoute) => (
                   <RouteItem key={childRoute.path} route={childRoute} level={level + 1} />
                 ))}
@@ -84,7 +68,7 @@ function RouteItem({ route, level = 0 }: { route: RouteType; level?: number }) {
         <Link
           href={route.path}
           className={cn(
-            "flex items-center gap-2 py-2 px-4 text-sm opacity-50 hover:opacity-100",
+            "flex items-center gap-2 py-2 text-sm opacity-50 hover:opacity-100 w-fit",
             isActive && "opacity-100 font-medium"
           )}
         >
@@ -96,9 +80,9 @@ function RouteItem({ route, level = 0 }: { route: RouteType; level?: number }) {
   )
 }
 
-export default function Sidebar() {
+export default function Sidebar({className, ...props}:ComponentProps<'aside'>) {
   return (
-    <aside className="bg-background border-r-2 h-screen overflow-y-auto">
+    <aside className={cn(className,"bg-background border-r-2 h-screen overflow-y-auto")} {...props}>
       <div className="p-8">
         {routes.map((route) => (
           <RouteItem key={route.path} route={route} />

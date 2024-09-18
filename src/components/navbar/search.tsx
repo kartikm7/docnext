@@ -1,7 +1,7 @@
 "use client";
-import { ComponentProps, useEffect, useState } from "react";
+import { ChangeEvent, ComponentProps, useEffect, useState } from "react";
 import { Input } from "../ui/input";
-import { BiCommand } from "react-icons/bi";
+import { BiCommand, BiSearch } from "react-icons/bi";
 import { routes, RouteType } from "../sidebar";
 import {
   CommandDialog,
@@ -11,12 +11,12 @@ import {
 } from "../ui/command";
 import { useRouter } from "next/navigation";
 
-export default function Search({ className, ...props }: ComponentProps<"div">) {
+export default function Search({ ...props }: ComponentProps<"div">) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [autoComplete, setAutoComplete] = useState<RouteType[]>(routes);
   const router = useRouter();
-  function handleChange(e) {
+  function handleChange(e:ChangeEvent<HTMLInputElement>) {
     const currentValue = e.target.value;
     setValue(currentValue);
     setAutoComplete(
@@ -75,10 +75,12 @@ export default function Search({ className, ...props }: ComponentProps<"div">) {
         onClick={() => setOpen((pre) => !pre)}
         {...props}
       >
-        <p className="text-sm">Search documentation</p>
+        <p className="text-sm hidden md:block">Search documentation</p>
+        <p className="text-sm">Search</p>
         <div className="flex items-center gap-1 bg-secondary w-fit p-1 px-2 rounded-md text-xs ">
-          <BiCommand />
-          <p>K</p>
+          <BiCommand className="hidden md:block"/>
+          <BiSearch className="md:hidden"/>
+          <p className="hidden md:block">K</p>
         </div>
       </div>
     </>
