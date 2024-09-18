@@ -1,3 +1,4 @@
+import React from 'react';
 import type { MDXComponents } from "mdx/types";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -32,31 +33,35 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     code: ({ className, children }) => {
       const language = className ? className.replace(/language-/, "") : "";
       return language ? (
-        <div className="flex flex-col w-full font-mono border-2 rounded-lg px-2">
-          <div className="flex justify-between items-center gap-5 border-b-2 px-2">
+        <div className="w-full overflow-hidden font-mono border-2 rounded-lg">
+          <div className="flex justify-between items-center gap-5 border-b-2 px-2 py-1">
             <div className="flex items-center gap-2">
               <FaTerminal />
               <p>{language}</p>
             </div>
             <CopyButton text={children as string} />
           </div>
-          <SyntaxHighlighter
-            language={language}
-            style={atomDark}
-            customStyle={{
-              margin: "0.5rem",
-              borderRadius: "0.5rem",
-              fontSize: "0.875rem",
-              // width: "",
-            }}
-          >
-            {children as string}
-          </SyntaxHighlighter>
+          <div className="overflow-x-auto">
+            <SyntaxHighlighter
+              language={language}
+              style={atomDark}
+              customStyle={{
+                margin: 0,
+                padding: '1rem',
+                fontSize: "0.875rem",
+                background: 'transparent',
+              }}
+              wrapLines={true}
+              wrapLongLines={true}
+            >
+              {children as string}
+            </SyntaxHighlighter>
+          </div>
         </div>
       ) : (
-        <div className="w-fit bg-secondary px-2 rounded-md m-2">
+        <code className="px-2 py-1 bg-secondary rounded-md text-sm">
           {children}
-        </div>
+        </code>
       );
     },
     pre: ({ children }) => <pre className="mb-4">{children}</pre>,

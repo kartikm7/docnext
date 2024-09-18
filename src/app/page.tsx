@@ -2,7 +2,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-col justify-center items-center w-full h-full">
+    <div className="relative flex flex-col justify-center items-center w-full h-screen">
       <Spotlight />
       <div className="pb-20 text-center">
       <h1 className="text-6xl">Simple and Effective</h1>
