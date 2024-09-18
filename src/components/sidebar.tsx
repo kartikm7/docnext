@@ -5,34 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { cn } from "@/lib/utils"
-
-export type RouteType = {
-  name: string
-  path: string
-  icon?: React.ReactNode
-  children?: RouteType[]
-}
-
-export const routes: RouteType[] = [
-  {
-    name: "Getting started",
-    path: "/docs",
-    children: [
-      {
-        name: "Quick Setup",
-        path: "/docs/quick-setup"
-      },
-      {
-        name: "How to make changes?",
-        path: "/docs/first-change"
-      }
-    ]
-  },
-  {
-    name: "Deploy",
-    path: "/docs/deploy",
-  }
-]
+import { routes, RouteType } from "@/routes"
 
 function RouteItem({ route, level = 0 }: { route: RouteType; level?: number }) {
   const pathname = usePathname()

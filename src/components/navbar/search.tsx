@@ -2,7 +2,7 @@
 import { ChangeEvent, ComponentProps, useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { BiCommand, BiSearch } from "react-icons/bi";
-import { routes, RouteType } from "../sidebar";
+import { routes, RouteType } from "@/routes";
 import {
   CommandDialog,
   CommandEmpty,
