@@ -76,7 +76,7 @@ export default function Search({ ...props }: ComponentProps<"div">) {
         {...props}
       >
         <p className="text-sm hidden md:block">Search documentation</p>
-        <p className="text-sm">Search</p>
+        <p className="text-sm md:hidden">Search</p>
         <div className="flex items-center gap-1 bg-secondary w-fit p-1 px-2 rounded-md text-xs ">
           <BiCommand className="hidden md:block"/>
           <BiSearch className="md:hidden"/>
