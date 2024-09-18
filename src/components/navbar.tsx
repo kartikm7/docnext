@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <div className="sticky top-0 w-full flex justify-between py-4 px-8 text-md border-b-2 bg-opacity-50 backdrop-blur-3xl">
+    <div className="sticky top-0 w-full z-10 flex justify-between py-4 px-8 text-md border-b-2 bg-opacity-50 backdrop-blur-3xl">
       <Link href={"/"} className="flex items-center gap-1 font-semibold">
         <Flower />
         DocNext

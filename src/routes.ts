@@ -7,7 +7,7 @@ export type RouteType = {
 
 export const routes: RouteType[] = [
   {
-    name: "Getting started",
+    name: "Introduction",
     path: "/docs",
     children: [
       {
@@ -15,10 +15,14 @@ export const routes: RouteType[] = [
         path: "/docs/quick-setup"
       },
       {
-        name: "How to make changes?",
+        name: "Make your first change",
         path: "/docs/first-change"
       }
     ]
+  },
+  {
+    name: "Routing",
+    path: "/docs/routing"
   },
   {
     name: "Deploy",

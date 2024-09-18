@@ -1,0 +1,35 @@
+# Routing
+Routing is simplified and recursive functions are already written to auto-integrate with the in-built search function.
+
+---
+
+The following is the structure for routing:
+
+```json
+[
+  {
+    name: "Introduction",
+    path: "/docs",
+    children: [
+      {
+        name: "Quick Setup",
+        path: "/docs/quick-setup"
+      },
+      {
+        name: "Make your first change",
+        path: "/docs/first-change"
+      }
+    ]
+  },
+  {
+    name: "Routing",
+    path: "/docs/routing"
+  },
+  {
+    name: "Deploy",
+    path: "/docs/deploy",
+  }
+]
+```
+So as you add new pages, you will have to statically fill the above and it integrates with the sidebar and the search functionalilty.  
+> This lies within *src/app/routes.ts*

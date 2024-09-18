@@ -5,14 +5,13 @@ import NextImage, { ImageProps } from "next/image";
 import { CopyButton } from "./components/copy-button";
 import { BiLink } from "react-icons/bi";
 import { FaTerminal } from "react-icons/fa";
-
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-      <h1 className="text-2xl font-bold mb-4">{children}</h1>
+      <h1 className="text-4xl font-bold mb-6">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-xl font-semibold mb-3">{children}</h2>
+      <h2 className="text-2xl font-semibold mb-3">{children}</h2>
     ),
     h3: ({ children }) => <h3 className="text-lg font-medium mb-2">{children}</h3>,
     p: ({ children }) => <p className="text-base mb-2">{children}</p>,
@@ -26,14 +25,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </a>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 pl-4 mb-4">
+      <blockquote className="border-l-4 pl-4 mb-4 opacity-75">
         {children}
       </blockquote>
     ),
     code: ({ className, children }) => {
       const language = className ? className.replace(/language-/, "") : "";
       return language ? (
-        <div className="flex flex-col w-fit max-w-full font-mono border-2 rounded-lg px-2">
+        <div className="flex flex-col w-full font-mono border-2 rounded-lg px-2">
           <div className="flex justify-between items-center gap-5 border-b-2 px-2">
             <div className="flex items-center gap-2">
               <FaTerminal />
@@ -48,14 +47,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               margin: "0.5rem",
               borderRadius: "0.5rem",
               fontSize: "0.875rem",
-              width: "fit-content",
+              // width: "",
             }}
           >
             {children as string}
           </SyntaxHighlighter>
         </div>
       ) : (
-        <div className="w-fit px-2 rounded-md m-2">
+        <div className="w-fit bg-secondary px-2 rounded-md m-2">
           {children}
         </div>
       );
@@ -78,14 +77,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </td>
     ),
-    hr: () => <hr className="border-t-2 my-4" />,
+    hr: () => <hr className="border-t-2 my-8" />,
     img: (props) => (
-      <div className="relative w-full h-64 my-4">
+      <div className="relative left-0 h-64 my-4">
         <NextImage
           {...(props as ImageProps)}
           layout="fill"
           objectFit="contain"
-          className="rounded-lg"
+          className=""
         />
       </div>
     ),
