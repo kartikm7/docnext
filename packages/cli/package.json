@@ -9,6 +9,11 @@
     "build": "tsc",
     "start": "node ./dist/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kartikm7/docnext",
+    "directory": "packages/cli"
+  },
   "bin": "./dist/index.js",
   "keywords": ["documentation", "template", "cli", "docs", "components", "nextjs", "react"],
   "author": {
