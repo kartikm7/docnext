@@ -10,7 +10,7 @@
     "start": "node ./dist/index.js"
   },
   "bin": "./dist/index.js",
-  "keywords": ["documentation", "template"],
+  "keywords": ["documentation", "template", "cli", "docs", "components", "nextjs", "react"],
   "author": {
     "name": "Kartikeya Mishra"
   },
