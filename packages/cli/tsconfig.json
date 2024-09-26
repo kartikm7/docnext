@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "target": "ESNext", 
+    "module": "ESNext", 
+    "moduleResolution": "node", 
+    "outDir": "./dist", 
+    "rootDir": "./", 
+    "strict": true, 
+    "esModuleInterop": true, 
+    "lib": ["ESNext", "DOM"], // Include ESNext and DOM libraries
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
