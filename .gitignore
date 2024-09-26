@@ -1,36 +1,38 @@
+```
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
+/template/node_modules
+/template/.pnp
+template/.pnp.js
+template/.yarn/install-state.gz
 
 # testing
-/coverage
+/template/coverage
 
 # next.js
-/.next/
-/out/
+/template/.next/
+/template/out/
 
 # production
-/build
+/template/build
 
 # misc
-.DS_Store
-*.pem
+/template/.DS_Store
+/template/*.pem
 
 # debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+/template/npm-debug.log*
+/template/yarn-debug.log*
+/template/yarn-error.log*
 
 # local env files
-.env*.local
+/template/.env*.local
 
 # vercel
-.vercel
+/template/.vercel
 
 # typescript
-*.tsbuildinfo
-next-env.d.ts
+/template/*.tsbuildinfo
+/template/next-env.d.ts
+```
