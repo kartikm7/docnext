@@ -24,8 +24,8 @@ program
 
 program.parse(process.argv);
 
-program.command('clone [projectName]')
-  .description('Clone the documentation') 
+program.command('create [projectName]')
+  .description('Create a DocNext project') 
   // .option('-n, --name <string>', 'name of the project', 'hello')
   .action(async (projectName) => {
     await welcome()
