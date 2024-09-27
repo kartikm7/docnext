@@ -29,7 +29,7 @@ export const routes: RouteType[] = [
     path: "/docs/deploy",
   },
   {
-    name: "Template",
-    path: "/docs/template"
+    name: "Boilerplate",
+    path: "/docs/boilerplate"
   }
 ]
