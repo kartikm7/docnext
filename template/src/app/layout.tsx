@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
-const raleway = Raleway({
+const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
-});
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+})
+
 
 export const metadata: Metadata = {
   title: "DocNext",
@@ -23,11 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${raleway.className} text-foreground bg-background dark:bg-zinc-950 antialiased w-full min-h-screen flex flex-col`}
+        className={`${poppins.className} antialiased text-foreground bg-background dark:bg-zinc-950 w-full min-h-screen flex flex-col`}
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
+          disableTransitionOnChange
           enableSystem
         >
           <Navbar />

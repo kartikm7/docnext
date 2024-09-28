@@ -115,7 +115,7 @@ export default function Search({ ...props }: ComponentProps<"div">) {
         onClick={() => setOpen((pre) => !pre)}
         {...props}
       >
-        <p className="text-sm hidden md:block">Search documentation</p>
+        <p className="text-sm hidden md:block px-2">Search documentation</p>
         <p className="text-sm md:hidden">Search</p>
         <div className="flex items-center gap-1 bg-secondary w-fit p-1 px-2 rounded-md text-xs ">
           <BiCommand className="hidden md:block" />

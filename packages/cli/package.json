@@ -1,6 +1,6 @@
 {
   "name": "docnext",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI to make documentation easier",
   "main": "index.js",
   "type": "module",
@@ -15,7 +15,15 @@
     "directory": "packages/cli"
   },
   "bin": "./dist/index.js",
-  "keywords": ["documentation", "template", "cli", "docs", "components", "nextjs", "react"],
+  "keywords": [
+    "documentation",
+    "template",
+    "cli",
+    "docs",
+    "components",
+    "nextjs",
+    "react"
+  ],
   "author": {
     "name": "Kartikeya Mishra"
   },
@@ -24,6 +32,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@inquirer/prompts": "^6.0.1",
     "@types/figlet": "^1.5.8",
     "@types/node": "^22.7.3",
     "chalk": "^5.3.0",

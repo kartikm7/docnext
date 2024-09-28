@@ -1,5 +1,5 @@
 import { Flower } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { FaDiscord, FaGithub } from "react-icons/fa";
 import { ModeToggle } from "./mode-toggle";
 import { Button } from "./ui/button";
 import Search from "./navbar/search";
@@ -25,9 +25,16 @@ export default function Navbar() {
         </div>
         <Search />
         <div className="flex justify-center items-center">
+          <Link href={'https://github.com/kartikm7/docnext'}>
           <Button size="icon" variant={"ghost"}>
             <FaGithub className="text-2xl" />
           </Button>
+          </Link>
+          <Link href={`${process.env.NEXT_PUBLIC_DISCORD}`}>
+          <Button size="icon" variant={"ghost"}>
+            <FaDiscord className="text-2xl" />
+          </Button>
+          </Link>
           <ModeToggle />
         </div>
       </div>
