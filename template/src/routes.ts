@@ -31,5 +31,9 @@ export const routes: RouteType[] = [
   {
     name: "Boilerplate",
     path: "/docs/boilerplate"
-  }
+  },
+  {
+    name: "Command Line Interface",
+    path: "/docs/cli"
+  },
 ]
