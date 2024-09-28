@@ -25,7 +25,7 @@ async function welcome(): Promise<void> {
 program
   .name('docnext')
   .description('CLI to make documentation easier!')
-  .version('1.0.2')
+  .version('1.0.3')
   .option('-y, --yes', 'bypass checks')
 
 program.parse(process.argv);

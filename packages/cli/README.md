@@ -1,8 +1,8 @@
 # DocNext
 A simple and effective way to do documentation.
-- Documentation template built over Next.js
+- Documentation template built using Next.js
 - A simple CLI tool to make life easier
-- Template with Typescript, TailwindCSS, MDX, ShadCN, MagicUI and Framer-Motion
+- Template configured with Typescript, TailwindCSS, MDX, ShadCN, MagicUI and Framer-Motion
 
 ## Commands
 ### Create
