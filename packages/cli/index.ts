@@ -7,7 +7,7 @@ import { exec } from "node:child_process"
 import figlet from "figlet"
 import gradient from "gradient-string"
 import { confirm } from '@inquirer/prompts';
-import { readdirSync,  rmdir, rmdirSync, rmSync } from "node:fs";
+import { readdirSync, rmSync } from "node:fs";
 import path from "node:path";
 
 const program = new Command();
@@ -18,6 +18,7 @@ async function welcome(): Promise<void> {
     resolve()
   }))
   console.log(gradient.morning(' Next.js template for documentation!'))
+  console.log(gradient.morning(' https://docnext.llocal.in'))
   console.log()
 }
 
@@ -73,7 +74,7 @@ program.command('clean')
     const yes = program.opts().yes;
     // incase there is no flag
     console.log('This deletes the template files, giving you a blank slate')
-    console.log(chalk.bgYellow('Please make sure you are in the root of the project'))
+    console.log(chalk.black.bgYellow(' Please make sure you are in the root of the project '))
     if (!yes) {
       const prompt1 = await confirm({ message: 'Are you sure?' })
       if (!prompt1) {
