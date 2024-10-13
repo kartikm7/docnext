@@ -30,7 +30,7 @@ export default function Navbar() {
             <FaGithub className="text-2xl" />
           </Button>
           </Link>
-          <Link href={`${process.env.NEXT_PUBLIC_DISCORD}`}>
+          <Link className="hidden md:block" href={`${process.env.NEXT_PUBLIC_DISCORD}`}>
           <Button size="icon" variant={"ghost"}>
             <FaDiscord className="text-2xl" />
           </Button>
