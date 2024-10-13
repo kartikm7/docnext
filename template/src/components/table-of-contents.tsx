@@ -33,7 +33,7 @@ export default function TableOfContents({className, ...props}:ComponentProps<'di
     return () => observer.disconnect();
   }, [pathName]);
   return (
-    <div className={cn(className,"flex flex-col h-screen overflow-y-auto min-w-64 max-w-64 p-8")} {...props}>
+    <div className={cn("flex flex-col h-screen overflow-y-auto min-w-64 max-w-64 p-8",className)} {...props}>
       <h1 className="text-sm font-medium">On this page</h1>        
       {toc?.map((val, index) => {
         return (

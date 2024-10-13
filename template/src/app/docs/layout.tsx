@@ -14,7 +14,7 @@ export default function DocsLayout({
           {children}
         </div>
       </div>
-      <TableOfContents className="sticky top-16 overflow-y-auto" />
+      <TableOfContents className="hidden lg:block sticky top-16 overflow-y-auto" />
     </div>
   );
 }
