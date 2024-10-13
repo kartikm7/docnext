@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import type { MDXComponents } from "mdx/types";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -6,18 +6,33 @@ import NextImage, { ImageProps } from "next/image";
 import { CopyButton } from "./components/copy-button";
 import { BiLink } from "react-icons/bi";
 import { FaTerminal } from "react-icons/fa";
+
+function slugify(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9 -]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-      <h1 className="text-4xl font-bold mb-6">{children}</h1>
+      <h1 id={slugify(children as string)} className="text-4xl font-bold mb-6">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-semibold mb-3">{children}</h2>
+      <h2 id={slugify(children as string)} className="text-2xl font-semibold mb-3">{children}</h2>
     ),
-    h3: ({ children }) => <h3 className="text-lg font-medium mb-2">{children}</h3>,
+    h3: ({ children }) => (
+      <h3 id={slugify(children as string)} className="text-lg font-medium mb-2">{children}</h3>
+    ),
     p: ({ children }) => <p className="text-base mb-2">{children}</p>,
-    ul: ({ children }) => <ul className="list-disc list-inside mb-2">{children}</ul>,
-    ol: ({ children }) => <ol className="list-decimal list-inside mb-2">{children}</ol>,
+    ul: ({ children }) => (
+      <ul className="list-disc list-inside mb-2">{children}</ul>
+    ),
+    ol: ({ children }) => (
+      <ol className="list-decimal list-inside mb-2">{children}</ol>
+    ),
     li: ({ children }) => <li className="mb-2">{children}</li>,
     a: ({ href, children }) => (
       <a href={href} className="flex items-center gap-1 hover:underline">
@@ -47,9 +62,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               style={atomDark}
               customStyle={{
                 margin: 0,
-                padding: '1rem',
+                padding: "1rem",
                 fontSize: "0.875rem",
-                background: 'transparent',
+                background: "transparent",
               }}
               wrapLines={true}
               wrapLongLines={true}
@@ -78,9 +93,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </th>
     ),
     td: ({ children }) => (
-      <td className="px-6 py-4 whitespace-nowrap text-sm">
-        {children}
-      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm">{children}</td>
     ),
     hr: () => <hr className="border-t-2 my-8" />,
     img: (props) => (
