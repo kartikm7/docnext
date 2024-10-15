@@ -79,7 +79,7 @@ program.command('clean')
     if (!yes) {
       const prompt1 = await confirm({ message: 'Are you sure?' })
       if (!prompt1) {
-        console.log("You can use this command " + gradient.morning('when you are ready!'))
+        console.log(` Sorry  ` + gradient.morning('DocNext ') + `could not be of help :/` )
         process.exit(0)
       }
     }
@@ -108,7 +108,7 @@ program.command('init')
     const command = "npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx"
     const yes = program.opts().yes;
     // incase there is no flag
-    console.log(chalk.black.bgYellow(' Please make sure you are in the root of the project  \n Note: This only works for a Next.js project w/ App Router'))
+    console.log(chalk.black.bgYellow(' Please make sure you are in the root of the project  \n Note: This only works for a Next.js project w/ App Router and it will also override the existing next.config.mjs'))
     if (!yes) {
       const prompt1 = await confirm({ message: ' Are you sure?' })
       if (!prompt1) {
