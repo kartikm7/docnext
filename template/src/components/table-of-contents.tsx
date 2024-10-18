@@ -37,7 +37,7 @@ export default function TableOfContents({className, ...props}:ComponentProps<'di
       <h1 className="text-sm font-medium">On this page</h1>        
       {toc?.map((val, index) => {
         return (
-          <a className={map.get(val.tagName) + " text-sm py-2" + (active == val.id ? " opacity-100 font-medium" : " opacity-50")} key={index} href={`#${val.id}`}>
+          <a className={map.get(val.tagName) + " text-sm py-2 hover:opacity-100 transition-all" + (active == val.id ? " opacity-100 font-medium" : " opacity-50")} key={index} href={`#${val.id}`}>
             {val.textContent}
           </a>
         );
