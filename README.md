@@ -1,5 +1,5 @@
 # DocNext
-![npm](https://img.shields.io/npm/v/docnext) ![npm downloads](https://img.shields.io/npm/dw/docnext) ![npm](https://img.shields.io/npm/l/docnext)
+![npm](https://img.shields.io/npm/v/docnext) ![npm downloads](https://img.shields.io/npm/dy/docnext) ![npm](https://img.shields.io/npm/l/docnext)
 
 A simple and effective way to do documentation.
 - Documentation template built using Next.js
