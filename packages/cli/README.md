@@ -17,6 +17,12 @@ Clean up the template and remove unnecessary files.
 npx docnext clean
 ```
 
+### Init
+> Initialize DocNext in an existing Next.js project! (Note: This overwrites the next.config.mjs)
+```bash
+npx docnext init
+```
+
 ### Help
 Display help for a specific command.
 ```
